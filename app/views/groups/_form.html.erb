@@ -15,6 +15,14 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.label :users %><br />
+    <%= f.collection_select(:user_ids,
+                            User.all, :id, :name, { :selected => @group.user_ids },
+                            { :multiple => true }) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
