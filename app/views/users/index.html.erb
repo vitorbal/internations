@@ -1,16 +1,21 @@
-<h1>Listing users</h1>
+<h1>Users</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to user.name, user %></td>
+    <td>
+      <%= link_to icon_tag('pencil'), edit_user_path(user), :title => 'Edit' %>
+      <%= link_to icon_tag('remove'), user,
+        method: :delete, data: { confirm: 'Are you sure?' },
+        :title => 'Destroy' %>
+    </td>
   </tr>
 <% end %>
 </table>

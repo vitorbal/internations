@@ -8,10 +8,17 @@
 </head>
 <body>
 
-<%= render 'shared/menu' %>
-<%= render 'shared/notice' %>
+<div id="container" class="container">
+  <%= render 'shared/notice' %>
 
-<%= yield %>
+  <div class="tabbable tabs-left">
+    <%= render 'shared/menu' %>
+
+    <div id="content" class="tab-content">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

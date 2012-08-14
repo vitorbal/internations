@@ -1,0 +1,7 @@
+// Changing path of icon sprite image
+$iconSpritePath: image-url('glyphicons-halflings.png');
+@import "bootstrap";
+
+#container {
+  padding: 70px 80px 70px;
+}

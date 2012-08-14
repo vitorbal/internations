@@ -7,4 +7,9 @@ module ApplicationHelper
 
     result.html_safe
   end
+
+  # Constructs an icon tag for the specified identifier
+  def icon_tag(identifier)
+    "<i class='icon-#{identifier}'></i>".html_safe
+  end
 end
