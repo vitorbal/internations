@@ -6,4 +6,13 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :group_users
 
   validates :name, :presence => true
+
+  before_destroy :is_deletable?
+
+  def is_deletable?
+    unless users.empty?
+      errors.add(:base, "Can not delete a group that still contains users")
+      return false
+    end
+  end
 end

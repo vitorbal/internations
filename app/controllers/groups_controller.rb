@@ -73,11 +73,16 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group = Group.find(params[:id])
-    @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_url }
-      format.json { head :no_content }
+      if @group.destroy
+        format.html { redirect_to groups_url }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to groups_url,
+                      notice: @group.errors.messages[:base].join(',') }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
