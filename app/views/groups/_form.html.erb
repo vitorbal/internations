@@ -20,7 +20,7 @@
     <%= f.label :users %><br />
     <%= f.collection_select(:user_ids,
                             User.all, :id, :name, { :selected => @group.user_ids },
-                            { :multiple => true }) %>
+                            { :multiple => true, :class => 'chosen' }) %>
   </div>
 
   <div class="actions">
