@@ -10,7 +10,9 @@ class Group < ActiveRecord::Base
   before_destroy :is_deletable?
 
   def is_deletable?
-    unless users.empty?
+    if users.empty?
+      return true
+    else
       errors.add(:base, "Can not delete a group that still contains users")
       return false
     end
